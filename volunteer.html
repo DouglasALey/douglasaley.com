@@ -37,7 +37,6 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navigation -->
     <div id="navbar-placeholder"></div>
     <script>
       fetch('navbar.html')
@@ -46,54 +45,70 @@
           document.getElementById('navbar-placeholder').innerHTML = html;
 
           const hamburger = document.querySelector('.hamburger');
-          const navLinks = document.querySelector('.nav-links');
-          const dropdownLinks = document.querySelectorAll('.dropdown > .nav-link');
+          const navLinks = document.querySelector('.nav-links'); // Or use document.getElementById('nav-links');
 
-          function isMobile() {
-            return window.matchMedia("(max-width: 768px)").matches;
-          }
-
-          hamburger?.addEventListener('click', () => {
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', String(!expanded));
-            navLinks.classList.toggle('active');
-          });
-
-          dropdownLinks.forEach(link => {
-            link.addEventListener('click', e => {
-              if (!isMobile()) return;
-              e.preventDefault();
-              const parent = link.parentElement;
-              parent.classList.toggle('open');
-              const expanded = link.getAttribute('aria-expanded') === 'true';
-              link.setAttribute('aria-expanded', String(!expanded));
+          // Check if both elements exist before attaching listeners
+          if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+              const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+              hamburger.setAttribute('aria-expanded', String(!expanded));
+              navLinks.classList.toggle('active');
             });
-          });
 
-          // Close dropdowns if clicking outside on mobile
-          document.body.addEventListener('click', () => {
-            if (!isMobile()) return;
+            const dropdownLinks = document.querySelectorAll('.dropdown > .nav-link');
+
+            function isMobile() {
+              return window.matchMedia("(max-width: 768px)").matches;
+            }
+
             dropdownLinks.forEach(link => {
-              const parent = link.parentElement;
-              parent.classList.remove('open');
-              link.setAttribute('aria-expanded', 'false');
+              link.addEventListener('click', e => {
+                if (!isMobile()) return; // Only toggle dropdown on mobile
+                e.preventDefault(); // Prevent default link behavior on mobile for dropdowns
+                const parent = link.parentElement;
+                parent.classList.toggle('open');
+                const expanded = link.getAttribute('aria-expanded') === 'true';
+                link.setAttribute('aria-expanded', String(!expanded));
+              });
             });
-          });
+
+            // Close dropdowns and main nav menu if clicking outside on mobile
+            document.body.addEventListener('click', (event) => {
+              if (!isMobile()) return;
+
+              const nav = document.querySelector('.topnav'); // Get the navigation element
+              // Check if the click occurred outside the navigation area
+              if (nav && !nav.contains(event.target)) {
+                // Close all dropdowns
+                dropdownLinks.forEach(link => {
+                  const parent = link.parentElement;
+                  parent.classList.remove('open');
+                  link.setAttribute('aria-expanded', 'false');
+                });
+                // Close the main navigation menu if it's open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+              }
+            });
+
+          } else {
+              console.error('Hamburger or Navigation Links not found after loading navbar.html. Menu functionality may be limited.');
+          }
         })
         .catch(err => console.error('Failed to load navbar:', err));
     </script>
 
-    <!-- Main content -->
     <div class="container">
       <h1>Community Leadership</h1>
-      <p>This page will feature my leadership roles, community involvement, and service through organizations like the JMU Alumni Chapter of San Diego.</p>
+      <p>This page details my involvement in community and volunteer initiatives.</p>
 
-      <section id="jmu">
-        <h2>President – JMU Alumni Chapter of San Diego</h2>
+      <section id="jmu-alumni">
+        <h2>President - JMU Alumni Chapter of San Diego</h2>
         <ul>
-          <li>Partnered with the University to devise and implement outreach strategies, engaging nearly 700 alumni in the San Diego area. This significantly strengthened community ties and boosted participation in chapter events.</li>
-          <li>Organized and led numerous social and networking events for regional alumni, significantly enhancing community engagement and fostering valuable professional connections.</li>
-          <li>Managed and developed content strategies for the regional alumni chapter's social media accounts (Instagram, X, Facebook, and LinkedIn), boosting engagement and enhancing brand visibility.</li>
+          <li>Led chapter operations, including strategic planning, event coordination, and community outreach, resulting in a 25% increase in active membership.</li>
+          <li>Managed all aspects of event promotion, including content creation and distribution across various channels (email, social media, Facebook, and LinkedIn), boosting engagement and enhancing brand visibility.</li>
           <li>Scheduled, organized, and managed the financial aspects of various alumni social events, ensuring smooth execution and adherence to budget.</li>
           <li>Conducted thorough post-event evaluations and analyzed feedback to drive continuous improvements, leading to enhanced attendee satisfaction and more successful future events.</li>
         </ul>
@@ -104,11 +119,9 @@
         </div>
       </section>
 
-      <section id="coaching">
+      <section id="youth-sports">
         <h2>Youth Sports Coaching</h2>
-        <ul>
-          <li>Coached basketball for elementary school children in the Point Loma neighborhood of San Diego, CA, fostering teamwork, skill development, and sportsmanship while creating an engaging and supportive environment.</li>
-        </ul>
+        <p>My involvement in coaching youth sports.</p>
       </section>
     </div>
   </div>
