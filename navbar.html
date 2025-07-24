@@ -2,41 +2,85 @@
   <a href="index.html" class="profile-link">
     <img src="profilepicture.png" alt="Douglas A. Ley" class="profile-pic" />
   </a>
-  <div class="dropdown">
-    <a class="nav-link" href="index.html">Home</a>
-    <div class="dropdown-content">
-      <a href="index.html#about">About Me</a>
-      <a href="index.html#contact">Contact</a>
-    </div>
+
+  <!-- Hamburger icon for mobile -->
+  <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  <div class="dropdown">
-    <a class="nav-link" href="work.html">Professional Experience</a>
-    <div class="dropdown-content">
-      <a href="work.html#experience">Work Experience</a>
-      <a href="work.html#tech-skills">Technical Skills</a>
-      <a href="work.html#pro-skills">Professional Skills</a>
+
+  <!-- Navigation links with dropdowns -->
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="dropdown-content">
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <a class="nav-link" href="education.html">Education & Credentials</a>
-    <div class="dropdown-content">
-      <a href="education.html#education">Education</a>
-      <a href="education.html#credentials">Credentials</a>
+
+    <div class="dropdown">
+      <a href="work.html" class="nav-link">Professional Experience</a>
+      <div class="dropdown-content">
+        <a href="work.html#experience">Work Experience</a>
+        <a href="work.html#tech-skills">Technical Skills</a>
+        <a href="work.html#pro-skills">Professional Skills</a>
+      </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <a class="nav-link" href="volunteer.html">Community Leadership</a>
-    <div class="dropdown-content">
-      <a href="volunteer.html#jmu">President – JMU Alumni Chapter of San Diego</a>
-      <a href="volunteer.html#coaching">Youth Sports Coaching</a>
+
+    <div class="dropdown">
+      <a href="education.html" class="nav-link">Education &amp; Credentials</a>
+      <div class="dropdown-content">
+        <a href="education.html#education">Education</a>
+        <a href="education.html#credentials">Credentials</a>
+      </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <a class="nav-link" href="hobbies.html">Personal Interests</a>
-    <div class="dropdown-content">
-      <a href="hobbies.html#gaming">Gaming Content Creator</a>
-      <a href="hobbies.html#travel">Travel</a>
-      <a href="hobbies.html#sports">Sports</a>
+
+    <div class="dropdown">
+      <a href="volunteer.html" class="nav-link">Community Leadership</a>
+      <div class="dropdown-content">
+        <a href="volunteer.html#jmu">President – JMU Alumni Chapter of San Diego</a>
+        <a href="volunteer.html#coaching">Youth Sports Coaching</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="hobbies.html" class="nav-link">Personal Interests</a>
+      <div class="dropdown-content">
+        <a href="hobbies.html#gaming">Gaming Content Creator</a>
+        <a href="hobbies.html#travel">Travel</a>
+        <a href="hobbies.html#sports">Sports</a>
+      </div>
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle nav links on hamburger click
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      // Accessibility toggle
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Toggle dropdowns on click (for mobile)
+    dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('click', function (e) {
+        e.stopPropagation();
+        this.classList.toggle('open');
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.body.addEventListener('click', () => {
+      dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
+    });
+  });
+</script>
