@@ -1,3 +1,8 @@
+/* Global box-sizing for easier sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Global Styles */
 body {
   margin: 0;
@@ -21,16 +26,16 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 60px;
-  padding: 0 20px;
+  height: 60px;           /* fixed height */
+  padding: 0 20px;        /* horizontal padding only */
   background: transparent;
   z-index: 1000;
   display: flex;
-  align-items: center;
-  justify-content: center; /* Center nav links */
+  align-items: center;    /* vertically center content */
+  justify-content: center; /* center nav links horizontally */
   gap: 30px;
-  box-sizing: border-box;
-  position: relative; /* For absolute profile image */
+  box-sizing: border-box; /* include padding and border in height */
+  position: relative;     /* for absolute profile image */
 }
 
 /* Profile link wrapper */
@@ -59,56 +64,9 @@ img {
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
+  line-height: 1.2;
   transition: color 0.3s ease;
   display: inline-block;
 }
 
-.topnav a.nav-link:hover,
-.topnav a.nav-link:focus {
-  color: #CBB677; /* JMU Gold */
-}
-
-/* Content Container */
-.container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.85);
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  font-size: 0.8rem;
-  color: black;
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  padding: 5px 10px;
-  z-index: 999;
-  border: none;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-  .topnav {
-    gap: 15px;
-    padding: 0 10px;
-  }
-
-  .topnav a.profile-link {
-    height: 36px;
-    width: 36px;
-    top: 12px;
-    left: 10px;
-  }
-
-  .topnav a.nav-link {
-    font-size: 0.9rem;
-  }
-}
+.to
