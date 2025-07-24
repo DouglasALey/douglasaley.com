@@ -9,10 +9,8 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navbar placeholder -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Main content -->
     <div class="container">
       <h1>Education & Credentials</h1>
       <p>This page will highlight my academic background and certifications.</p>
@@ -52,9 +50,10 @@
           });
 
           // Bind dropdown toggles on mobile
-          document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
+          const dropdownLinks = document.querySelectorAll('.dropdown > .nav-link');
+          dropdownLinks.forEach(link => {
             link.addEventListener('click', e => {
-              if (window.innerWidth <= 768) {
+              if (window.innerWidth <= 768) { // Using window.innerWidth is equivalent to isMobile() here
                 e.preventDefault();
                 const parent = link.parentElement;
                 parent.classList.toggle('open');
@@ -62,6 +61,30 @@
                 link.setAttribute('aria-expanded', String(!expanded));
               }
             });
+          });
+
+          // UPDATED: Close dropdowns and main nav menu if clicking outside on mobile
+          document.body.addEventListener('click', (event) => {
+            function isMobile() {
+                return window.matchMedia("(max-width: 768px)").matches;
+            }
+            if (!isMobile()) return;
+
+            const nav = document.querySelector('.topnav'); // Get the navigation element
+            // Check if the click occurred outside the navigation area
+            if (nav && !nav.contains(event.target)) {
+              // Close all dropdowns
+              document.querySelectorAll('.dropdown > .nav-link').forEach(link => { // Re-select dropdowns for robustness
+                const parent = link.parentElement;
+                parent.classList.remove('open');
+                link.setAttribute('aria-expanded', 'false');
+              });
+              // Close the main navigation menu if it's open
+              if (navLinks.classList.contains('active')) {
+                  navLinks.classList.remove('active');
+                  hamburger.setAttribute('aria-expanded', 'false');
+              }
+            }
           });
         }
       })
