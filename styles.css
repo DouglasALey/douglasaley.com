@@ -30,20 +30,26 @@ body {
 }
 
 /* PROFILE IMAGE IN NAV */
-.topnav img.profile-pic {
+.topnav a.profile-link {
+  display: inline-block;
   height: 40px;
   width: 40px;
   min-width: 40px;
   min-height: 40px;
+}
+
+.topnav img.profile-pic {
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   border: 2px solid #CBB677; /* JMU Gold border */
   object-fit: cover;
   background: none;
-  position: relative; /* works better on mobile */
+  position: relative;
 }
 
 /* NAV LINKS */
-.topnav a {
+.topnav a.nav-link {
   color: white;
   padding: 14px 20px;
   text-decoration: none;
@@ -53,8 +59,8 @@ body {
   z-index: 1001;
 }
 
-.topnav a:hover,
-.topnav a:focus {
+.topnav a.nav-link:hover,
+.topnav a.nav-link:focus {
   background-color: transparent;
   color: #CBB677; /* gold text on hover */
 }
@@ -62,13 +68,12 @@ body {
 /* MAIN CONTAINER */
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 100px auto 40px auto; /* add top margin to clear nav */
   padding: 40px 20px;
   background: rgba(255, 255, 255, 0.85);
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  flex-grow: 1;
 }
 
 /* TYPOGRAPHY */
@@ -87,6 +92,7 @@ footer {
   color: black;
   padding: 10px;
   background: transparent;
+  margin-bottom: 10px;
 }
 
 /* MOBILE RESPONSIVENESS */
@@ -97,12 +103,12 @@ footer {
     gap: 10px;
   }
 
-  .topnav a {
+  .topnav a.nav-link {
     font-size: 0.9rem;
     padding: 10px;
   }
 
-  .topnav img.profile-pic {
+  .topnav a.profile-link {
     height: 36px;
     width: 36px;
   }
