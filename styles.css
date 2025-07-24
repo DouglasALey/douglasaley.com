@@ -12,7 +12,7 @@ body {
 }
 
 .topnav {
-  background-color: rgba(69, 0, 132, 0.9); /* JMU Purple with transparency */
+  background-color: transparent; /* made transparent */
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,7 +20,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* removed box-shadow for no bar or add if you want some subtle shadow */
   padding: 0 20px;
   height: 60px;
   gap: 20px;
@@ -80,5 +80,5 @@ footer {
   color: black;
   font-size: 0.9rem;
   user-select: none;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+  /* removed box-shadow to eliminate the thin line */
 }
