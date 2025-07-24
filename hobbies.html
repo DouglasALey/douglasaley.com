@@ -9,16 +9,8 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navigation -->
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('navbar-placeholder').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load navbar:', err));
-</script>
+    <!-- Navbar placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Main content -->
     <div class="container">
@@ -47,34 +39,50 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-      const dropdowns = document.querySelectorAll('.dropdown');
+    // Load navbar, then initialize menu functionality
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
 
-      hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', !expanded);
-      });
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const dropdowns = document.querySelectorAll('.dropdown > .nav-link');
 
-      function isMobile() {
-        return window.matchMedia("(max-width: 768px)").matches;
-      }
+        if (!hamburger || !navLinks) return;
 
-      dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function (e) {
-          if (!isMobile()) return;
-          e.stopPropagation();
-          this.classList.toggle('open');
+        hamburger.addEventListener('click', () => {
+          const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', String(!expanded));
+          navLinks.classList.toggle('active');
         });
-      });
 
-      document.body.addEventListener('click', () => {
-        if (!isMobile()) return;
-        dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
-      });
-    });
+        function isMobile() {
+          return window.matchMedia("(max-width: 768px)").matches;
+        }
+
+        dropdowns.forEach(link => {
+          link.addEventListener('click', e => {
+            if (!isMobile()) return;
+            e.preventDefault();
+            const parent = link.parentElement;
+            parent.classList.toggle('open');
+            const expanded = link.getAttribute('aria-expanded') === 'true';
+            link.setAttribute('aria-expanded', String(!expanded));
+          });
+        });
+
+        // Close dropdowns if clicking outside on mobile
+        document.body.addEventListener('click', () => {
+          if (!isMobile()) return;
+          dropdowns.forEach(link => {
+            const parent = link.parentElement;
+            parent.classList.remove('open');
+            link.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })
+      .catch(err => console.error('Failed to load navbar:', err));
   </script>
 </body>
 </html>
