@@ -37,7 +37,7 @@ img {
   justify-content: center;
   gap: 30px;
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 1000; /* Base z-index for the top navigation bar */
   user-select: none;
   position: relative;
 }
@@ -55,7 +55,7 @@ img {
   border-radius: 50%;
   overflow: hidden;
   text-decoration: none;
-  z-index: 1001; /* Ensure it's above other elements */
+  z-index: 1000; /* Changed this from 1001 to 1000, so it's under the nav-links.active */
 }
 
 .topnav a.profile-link .profile-pic {
@@ -134,7 +134,7 @@ img {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1001; /* Ensure it's above other elements */
+  z-index: 1001; /* Ensure it's above other elements like the profile link */
   position: absolute;
   right: 20px;
 }
@@ -194,9 +194,10 @@ img {
 
   .nav-links.active {
     display: flex; /* Show menu when active */
+    z-index: 1002; /* Ensures it's on top of the profile link and hamburger icon */
   }
 
-  /* NEW RULE: Text color for nav links when mobile menu is active */
+  /* Text color for nav links when mobile menu is active */
   .nav-links.active .nav-link {
     color: #450084; /* Change text color to JMU Purple when menu is open */
   }
