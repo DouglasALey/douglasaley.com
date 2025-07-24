@@ -157,9 +157,15 @@ img {
 
 .hamburger span {
   height: 3px;
-  background: #450084;
+  background: #450084; /* JMU Purple for default bars */
   border-radius: 2px;
   display: block;
+  transition: background-color 0.3s ease;
+}
+
+/* Change hamburger bar color when active */
+.hamburger[aria-expanded="true"] span {
+  background-color: #CBB677; /* JMU Gold when open */
 }
 
 /* Mobile styles */
@@ -227,11 +233,6 @@ img {
 
   .nav-links {
     padding-left: 0;
-  }
-
-  /* **NEW: Make nav links purple on mobile so text is visible** */
-  .nav-link {
-    color: #450084;
   }
 }
 
