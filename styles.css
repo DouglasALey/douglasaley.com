@@ -44,24 +44,24 @@ img {
   padding: 0 20px;
   background: transparent; /* Transparent so gradient shows through */
   z-index: 1000;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* center all nav links + profile pic */
   gap: 30px;
   box-sizing: border-box;
-  position: relative;
   user-select: none;
+  /* Remove relative or absolute positioning */
+  position: fixed;
 }
 
 /* Profile link wrapper */
 .topnav a.profile-link {
-  position: absolute;
-  left: 20px;
-  top: 10px;
+  position: static; /* no absolute positioning */
   height: 40px;
   width: 40px;
-  display: block;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* Profile Image */
@@ -150,13 +150,12 @@ img {
 
 /* Hamburger menu for mobile */
 .hamburger {
+  position: static; /* no absolute */
+  margin-left: auto; /* push hamburger right */
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  position: absolute;
-  right: 20px;
-  top: 18px;
   width: 24px;
   height: 18px;
   z-index: 3000;
@@ -171,6 +170,10 @@ img {
 
 /* Show hamburger on small screens */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .nav-links {
     position: fixed;
     top: 60px;
@@ -190,10 +193,6 @@ img {
   }
 
   .nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
     display: flex;
   }
 
