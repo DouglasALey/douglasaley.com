@@ -3,37 +3,53 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  color: #000;
+  color: #000000;
+  padding-top: 50px; /* space for fixed nav */
 }
 
 .container {
   max-width: 800px;
-  margin: 100px auto;
+  margin: 0 auto;
+  padding: 40px 20px;
   text-align: center;
 }
 
 h1 {
   font-size: 2.5rem;
   color: #450084; /* JMU Purple */
+  margin-bottom: 0.5em;
 }
 
 p {
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.1rem;
+  color: #333333;
+  max-width: 600px;
+  margin: 0 auto 1.5em;
 }
 
-nav {
-  margin-top: 30px;
+.topnav {
+  background-color: #450084; /* JMU Purple */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-nav a {
-  margin: 0 15px;
+.topnav a {
+  color: white;
+  padding: 14px 20px;
   text-decoration: none;
-  color: #CBB677; /* JMU Gold */
   font-weight: bold;
-  transition: color 0.3s;
+  font-size: 1rem;
+  display: block;
+  transition: background-color 0.3s ease;
 }
 
-nav a:hover {
-  color: #450084;
+.topnav a:hover,
+.topnav a:focus {
+  background-color: #CBB677; /* JMU Gold */
+  color: black;
 }
