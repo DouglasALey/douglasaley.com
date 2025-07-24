@@ -21,25 +21,26 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
   height: 60px;
   padding: 0 20px;
-  background-color: transparent; /* Transparent nav */
+  background: transparent;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center nav links */
+  gap: 30px;
+  box-sizing: border-box;
+  position: relative; /* For absolute profile image */
 }
 
 /* Profile link wrapper */
 .topnav a.profile-link {
-  display: block;
-  height: 50px;
-  width: 50px;
-  flex-shrink: 0;
   position: absolute;
   left: 20px;
-  top: 5px;
+  top: 10px;
+  height: 40px;
+  width: 40px;
+  display: block;
 }
 
 /* Profile Image */
@@ -59,6 +60,7 @@ img {
   font-weight: bold;
   font-size: 1rem;
   transition: color 0.3s ease;
+  display: inline-block;
 }
 
 .topnav a.nav-link:hover,
@@ -90,4 +92,23 @@ img {
   padding: 5px 10px;
   z-index: 999;
   border: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .topnav {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .topnav a.profile-link {
+    height: 36px;
+    width: 36px;
+    top: 12px;
+    left: 10px;
+  }
+
+  .topnav a.nav-link {
+    font-size: 0.9rem;
+  }
 }
