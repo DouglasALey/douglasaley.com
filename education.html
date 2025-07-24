@@ -3,27 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Education &amp; Credentials - Douglas A. Ley</title>
+  <title>Education & Credentials - Douglas A. Ley</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navigation -->
-<div id="navbar-placeholder"></div>
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('navbar-placeholder').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load navbar:', err));
-</script>
+    <!-- Navbar placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Main content -->
     <div class="container">
-      <h1>Education &amp; Credentials</h1>
+      <h1>Education & Credentials</h1>
       <p>This page will highlight my academic background and certifications.</p>
 
       <section id="education">
@@ -40,3 +31,41 @@
 
   <footer class="footer">
     &copy; Douglas A. Ley 2025
+  </footer>
+
+  <script>
+    // Load navbar dynamically and setup hamburger menu & dropdown toggles
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+
+        // Bind hamburger button toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        if (hamburger && navLinks) {
+          hamburger.addEventListener('click', () => {
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', String(!expanded));
+            navLinks.classList.toggle('active');
+          });
+
+          // Bind dropdown toggles on mobile
+          document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
+            link.addEventListener('click', e => {
+              if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parent = link.parentElement;
+                parent.classList.toggle('open');
+                const expanded = link.getAttribute('aria-expanded') === 'true';
+                link.setAttribute('aria-expanded', String(!expanded));
+              }
+            });
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load navbar:', err));
+  </script>
+</body>
+</html>
