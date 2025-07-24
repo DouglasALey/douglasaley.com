@@ -1,33 +1,48 @@
-.profile-pic {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #CBB677; /* JMU Gold */
-  margin-right: 1rem;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+  color: #450084; /* JMU Purple for main text */
 }
 
 .topnav {
   display: flex;
   align-items: center;
-  background-color: #000; /* Black background for minimalist look */
-  padding: 1rem;
+  justify-content: flex-start;
+  background-color: #450084; /* JMU Purple */
+  padding: 10px 20px;
 }
 
 .topnav a {
-  color: #ffffff;
+  color: white;
   text-decoration: none;
-  margin-left: 1rem;
+  margin-left: 20px;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: linear-gradient(to bottom right, #450084, #CBB677); /* JMU Purple to Gold gradient */
-  color: #ffffff;
+.topnav a:hover {
+  color: #CBB677; /* JMU Gold */
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #CBB677; /* Gold outline */
+  margin-right: 20px;
 }
 
 .container {
-  padding: 2rem;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #450084;
+}
+
+p {
+  color: #333;
 }
