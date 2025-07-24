@@ -9,10 +9,8 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Navbar placeholder -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Main content -->
     <div class="container">
       <h1>Personal Interests</h1>
       <p>This page will share a glimpse into my hobbies, creative projects, and passions outside of work.</p>
@@ -46,41 +44,57 @@
         document.getElementById('navbar-placeholder').innerHTML = html;
 
         const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown > .nav-link');
+        const navLinks = document.querySelector('.nav-links'); // Or use document.getElementById('nav-links');
 
-        if (!hamburger || !navLinks) return;
+        // Check if both elements exist before attaching listeners
+        if (hamburger && navLinks) {
+          hamburger.addEventListener('click', () => {
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', String(!expanded));
+            navLinks.classList.toggle('active');
+          });
 
-        hamburger.addEventListener('click', () => {
-          const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', String(!expanded));
-          navLinks.classList.toggle('active');
-        });
+          const dropdownLinks = document.querySelectorAll('.dropdown > .nav-link');
 
-        function isMobile() {
-          return window.matchMedia("(max-width: 768px)").matches;
-        }
+          function isMobile() {
+            return window.matchMedia("(max-width: 768px)").matches;
+          }
 
-        dropdowns.forEach(link => {
-          link.addEventListener('click', e => {
+          dropdownLinks.forEach(link => {
+            link.addEventListener('click', e => {
+              if (!isMobile()) return; // Only toggle dropdown on mobile
+              e.preventDefault(); // Prevent default link behavior on mobile for dropdowns
+              const parent = link.parentElement;
+              parent.classList.toggle('open');
+              const expanded = link.getAttribute('aria-expanded') === 'true';
+              link.setAttribute('aria-expanded', String(!expanded));
+            });
+          });
+
+          // Close dropdowns and main nav menu if clicking outside on mobile
+          document.body.addEventListener('click', (event) => {
             if (!isMobile()) return;
-            e.preventDefault();
-            const parent = link.parentElement;
-            parent.classList.toggle('open');
-            const expanded = link.getAttribute('aria-expanded') === 'true';
-            link.setAttribute('aria-expanded', String(!expanded));
-          });
-        });
 
-        // Close dropdowns if clicking outside on mobile
-        document.body.addEventListener('click', () => {
-          if (!isMobile()) return;
-          dropdowns.forEach(link => {
-            const parent = link.parentElement;
-            parent.classList.remove('open');
-            link.setAttribute('aria-expanded', 'false');
+            const nav = document.querySelector('.topnav'); // Get the navigation element
+            // Check if the click occurred outside the navigation area
+            if (nav && !nav.contains(event.target)) {
+              // Close all dropdowns
+              dropdownLinks.forEach(link => {
+                const parent = link.parentElement;
+                parent.classList.remove('open');
+                link.setAttribute('aria-expanded', 'false');
+              });
+              // Close the main navigation menu if it's open
+              if (navLinks.classList.contains('active')) {
+                  navLinks.classList.remove('active');
+                  hamburger.setAttribute('aria-expanded', 'false');
+              }
+            }
           });
-        });
+
+        } else {
+            console.error('Hamburger or Navigation Links not found after loading navbar.html. Menu functionality may be limited.');
+        }
       })
       .catch(err => console.error('Failed to load navbar:', err));
   </script>
