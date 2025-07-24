@@ -5,31 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Douglas A. Ley</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Top Navigation -->
-<div id="navbar-placeholder"></div>
-  <!-- Main Content -->
-  <div class="container">
-    <h1>Douglas A. Ley</h1>
-    <p>Project & Product Manager | JMU Alumni</p>
-    <section>
-      <h2>Welcome</h2>
-      <p>This is my personal website — more content coming soon!</p>
-    </section>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav class="topnav">
+      <a href="index.html" class="profile-link">
+        <img src="profilepicture.png" alt="Douglas A. Ley" class="profile-pic" />
+      </a>
+
+      <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-links">
+        <div class="dropdown">
+          <a href="index.html" class="nav-link">Home</a>
+          <div class="dropdown-content">
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="work.html" class="nav-link">Professional Experience</a>
+          <div class="dropdown-content">
+            <a href="work.html#experience">Work Experience</a>
+            <a href="work.html#tech-skills">Technical Skills</a>
+            <a href="work.html#pro-skills">Professional Skills</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="education.html" class="nav-link">Education &amp; Credentials</a>
+          <div class="dropdown-content">
+            <a href="education.html#education">Education</a>
+            <a href="education.html#credentials">Credentials</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="volunteer.html" class="nav-link">Community Leadership</a>
+          <div class="dropdown-content">
+            <a href="volunteer.html#jmu">President – JMU Alumni Chapter of San Diego</a>
+            <a href="volunteer.html#coaching">Youth Sports Coaching</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="hobbies.html" class="nav-link">Personal Interests</a>
+          <div class="dropdown-content">
+            <a href="hobbies.html#gaming">Gaming Content Creator</a>
+            <a href="hobbies.html#travel">Travel</a>
+            <a href="hobbies.html#sports">Sports</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+      <h1>Douglas A. Ley</h1>
+      <p>Project & Product Manager | JMU Alumni</p>
+      <section>
+        <h2>Welcome</h2>
+        <p>This is my personal website — more content coming soon!</p>
+      </section>
+    </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     &copy; Douglas A. Ley 2025
   </footer>
-<script>
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar-placeholder").innerHTML = data;
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+      });
+
+      function isMobile() {
+        return window.matchMedia("(max-width: 768px)").matches;
+      }
+
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function (e) {
+          if (!isMobile()) return;
+          e.stopPropagation();
+          this.classList.toggle('open');
+        });
+      });
+
+      document.body.addEventListener('click', () => {
+        if (!isMobile()) return;
+        dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
+      });
     });
-</script>
+  </script>
 </body>
 </html>
