@@ -293,7 +293,7 @@ img {
   border-radius: 0; /* Removed border-radius */
   padding: 0; /* Removed padding */
   margin-bottom: 10px; /* Kept for spacing between list items */
-
+  display: list-item; /* Ensures it behaves as a standard list item */
   /* Removed display: flex; align-items: center; gap: 10px; */
   color: #333;
   font-size: 1rem;
@@ -325,7 +325,7 @@ img {
 /* Style for the location */
 .education-entry .location {
     font-size: 1rem; /* Slightly smaller than school name */
-    color: #555; /* A bit lighter color */
+    color: #555;
     white-space: nowrap; /* Prevent "Harrisonburg, VA" from wrapping */
     text-align: right; /* Explicitly right-align */
 }
@@ -338,6 +338,46 @@ img {
     margin-top: 0; /* Remove default paragraph top margin */
     margin-bottom: 10px; /* Space after the degree info */
     line-height: 1.4; /* Adjust line height for readability */
+}
+
+/* New style for the work experience entry container */
+.work-entry {
+    margin-bottom: 20px;
+}
+
+/* Style for the line containing company name and dates */
+.company-dates-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+/* Style for the company name */
+.company-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #450084;
+    text-align: left;
+    flex-grow: 1;
+}
+
+/* Style for the work dates */
+.work-dates {
+    font-size: 1rem;
+    color: #555;
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Style for the position information */
+.position-info {
+    font-size: 0.95rem;
+    color: #333;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
 /* Ensure the parent .container p does not override the new specific styles */
@@ -364,65 +404,4 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* New styles for work experience entries, similar to education */
-.work-entry {
-    margin-bottom: 20px; /* Spacing between work entries */
-}
-
-/* Style for the line containing company name and location */
-.work-entry .company-location-line {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Pushes items to the ends */
-    align-items: baseline; /* Aligns text based on their baselines */
-    margin-bottom: 5px; /* Spacing between this line and the job title/dates */
-}
-
-/* Style for the company name */
-.work-entry .company-name {
-    font-size: 1.2rem; /* Slightly larger */
-    font-weight: 600; /* Bold */
-    color: #450084; /* JMU Purple */
-    text-align: left; /* Explicitly left-align */
-    flex-grow: 1; /* Allow it to take up available space */
-}
-
-/* Style for the work location */
-.work-entry .work-location {
-    font-size: 1rem; /* Slightly smaller */
-    color: #555; /* Lighter color */
-    white-space: nowrap; /* Prevent wrapping */
-    text-align: right; /* Explicitly right-align */
-}
-
-/* Style for the job title and dates line */
-.work-entry .job-title-date {
-    font-size: 0.95rem; /* Smaller font for degree/job info */
-    color: #333;
-    text-align: left; /* Left align the job information */
-    margin-top: 0; /* Remove default paragraph top margin */
-    margin-bottom: 10px; /* Space after the job info */
-    line-height: 1.4; /* Adjust line height for readability */
-}
-
-.work-entry .job-dates {
-    float: right; /* Float the dates to the right */
-    color: #555;
-    font-size: 0.9rem;
-    white-space: nowrap; /* Prevent dates from wrapping */
-}
-
-/* Ensure bullet points are styled for work experience lists */
-.work-entry ul {
-    list-style: disc;
-    padding-left: 20px;
-    margin-top: 5px;
-}
-
-.work-entry ul li {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #333;
-    margin-bottom: 5px;
 }
