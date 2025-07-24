@@ -10,16 +10,15 @@
 <body>
   <div class="page-wrapper">
     <!-- Navigation -->
-<div id="navbar-placeholder"></div>
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('navbar-placeholder').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load navbar:', err));
-</script>
+    <div id="navbar-placeholder"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+        })
+        .catch(err => console.error('Failed to load navbar:', err));
+    </script>
 
     <!-- Main content -->
     <div class="container">
@@ -28,12 +27,20 @@
 
       <section id="jmu">
         <h2>President – JMU Alumni Chapter of San Diego</h2>
-        <p>Details about my presidency and activities.</p>
+        <ul>
+          <li>Partnered with the University to devise and implement outreach strategies, engaging nearly 700 alumni in the San Diego area. This significantly strengthened community ties and boosted participation in chapter events.</li>
+          <li>Organized and led numerous social and networking events for regional alumni, significantly enhancing community engagement and fostering valuable professional connections.</li>
+          <li>Managed and developed content strategies for the regional alumni chapter's social media accounts (Instagram, X, Facebook, and LinkedIn), boosting engagement and enhancing brand visibility.</li>
+          <li>Scheduled, organized, and managed the financial aspects of various alumni social events, ensuring smooth execution and adherence to budget.</li>
+          <li>Conducted thorough post-event evaluations and analyzed feedback to drive continuous improvements, leading to enhanced attendee satisfaction and more successful future events.</li>
+        </ul>
       </section>
 
       <section id="coaching">
         <h2>Youth Sports Coaching</h2>
-        <p>Information about my coaching involvement and experiences.</p>
+        <ul>
+          <li>Coached basketball for elementary school children in the Point Loma neighborhood of San Diego, CA, fostering teamwork, skill development, and sportsmanship while creating an engaging and supportive environment.</li>
+        </ul>
       </section>
     </div>
   </div>
@@ -48,8 +55,8 @@
       const navLinks = document.querySelector('.nav-links');
       const dropdowns = document.querySelectorAll('.dropdown');
 
-      hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+      hamburger?.addEventListener('click', () => {
+        navLinks?.classList.toggle('active');
         const expanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', !expanded);
       });
