@@ -1,4 +1,4 @@
-/* Global box-sizing for easier sizing */
+/* Global box-sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -9,7 +9,7 @@ body {
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000000;
-  padding-top: 60px; /* space for fixed nav */
+  padding-top: 60px;
   background: linear-gradient(180deg, #450084 0%, #CBB677 100%);
   background-attachment: fixed;
   min-height: 100vh;
@@ -42,7 +42,7 @@ img {
   position: relative;
 }
 
-/* Profile link container */
+/* Profile link */
 .topnav a.profile-link {
   position: absolute;
   left: 20px;
