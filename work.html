@@ -21,5 +21,12 @@
   <footer class="footer">
     &copy; Douglas A. Ley 2025
   </footer>
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
 </body>
 </html>
