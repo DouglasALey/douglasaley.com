@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional & Technical Skills - Douglas A. Ley</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <div id="navbar-placeholder"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+
+          if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+              const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+              hamburger.setAttribute('aria-expanded', String(!expanded));
+              navLinks.classList.toggle('active');
+            });
+
+            const dropdownLinks = document.querySelectorAll('.dropdown > .nav-link');
+
+            function isMobile() {
+              return window.matchMedia("(max-width: 768px)").matches;
+            }
+
+            dropdownLinks.forEach(link => {
+              link.addEventListener('click', e => {
+                if (!isMobile()) return;
+                e.preventDefault();
+                const parent = link.parentElement;
+                parent.classList.toggle('open');
+                const expanded = link.getAttribute('aria-expanded') === 'true';
+                link.setAttribute('aria-expanded', String(!expanded));
+              });
+            });
+
+            document.body.addEventListener('click', (event) => {
+              if (!isMobile()) return;
+
+              const nav = document.querySelector('.topnav');
+              if (nav && !nav.contains(event.target)) {
+                dropdownLinks.forEach(link => {
+                  const parent = link.parentElement;
+                  parent.classList.remove('open');
+                  link.setAttribute('aria-expanded', 'false');
+                });
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+              }
+            });
+
+          } else {
+              console.error('Hamburger or Navigation Links not found after loading navbar.html. Menu functionality may be limited.');
+          }
+        })
+        .catch(err => console.error('Failed to load navbar:', err));
+    </script>
+
+    <div class="container">
+      <h1>Professional & Technical Skills</h1>
+      <p>This page details my professional and technical proficiencies.</p>
+
+      <section id="pro-skills">
+        <h2>Professional Skills</h2>
+        <ul>
+            <li>Project Lifecycle Management</li>
+            <li>Project Cost Estimation, Negotiation, and Budgeting</li>
+            <li>Time Management, Organization, and Resource Allocation</li>
+            <li>Standard Operating Procedure (SOP) Creation and Documentation</li>
+            <li>Cross-Functional Leadership with Team Building</li>
+            <li>Operational Development and Continuous Improvement</li>
+            <li>Client and Vendor Relationship Management</li>
+            <li>Account Development with Strategic Growth Initiatives</li>
+            <li>Supply Chain Analysis and Solutions</li>
+            <li>Quality Assurance and Auditing</li>
+            <li>Analytical Thinking, Problem Solving, and Attention to Detail</li>
+            <li>Key Performance Indicator (KPI) Tracking</li>
+            <li>Product and Patent Portfolio Administration</li>
+            <li>Presenting and Exhibiting Marketing Material</li>
+        </ul>
+      </section>
+
+      <section id="tech-skills">
+        <h2>Technical Skills</h2>
+        <ul>
+            <li>Microsoft Office Suite - Excel, Word, Outlook, PowerPoint, Access, Project, Visio, OneDrive, and SharePoint</li>
+            <li>Salesforce Customer Relationship Management (CRM) Software</li>
+            <li>Material Resource Planning (MRP) Software integrated with QuickBooks-based Accounting Systems</li>
+            <li>Video Conferencing and Communication Software - Jabber, Webex, Microsoft Teams, Zoom, OBS, and Streamlabs</li>
+            <li>Document Management and Timekeeping Systems - iManage, DropBox, and Intapp</li>
+            <li>Productivity Improvement Concepts and Applications - Lean, Agile, Kanban, 5S, Kaizen, and Six Sigma</li>
+            <li>eDiscovery / Literature Databases and Methodologies - Relativity, Innography, Wayback Machine, Google Patents, Espacenet, WIPO Patentscope, Designview, USPTO PAIR, and other foreign patent and literature databases</li>
+            <li>Computer-Aided Design (CAD) programs, SSH/Telnet, Programming Languages, Camera Systems, and Sensory Equipment</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    &copy; Douglas A. Ley 2025
+  </footer>
+</body>
+</html>
