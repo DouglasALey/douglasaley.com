@@ -228,6 +228,11 @@ img {
   .nav-links {
     padding-left: 0;
   }
+
+  /* **NEW: Make nav links purple on mobile so text is visible** */
+  .nav-link {
+    color: #450084;
+  }
 }
 
 /* Page content */
