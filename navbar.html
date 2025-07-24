@@ -65,21 +65,26 @@
     // Toggle nav links on hamburger click
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      // Accessibility toggle
       const expanded = hamburger.getAttribute('aria-expanded') === 'true';
       hamburger.setAttribute('aria-expanded', !expanded);
     });
 
-    // Toggle dropdowns on click (for mobile)
+    // Enable dropdown toggle only on mobile
+    function isMobile() {
+      return window.matchMedia("(max-width: 768px)").matches;
+    }
+
     dropdowns.forEach(dropdown => {
       dropdown.addEventListener('click', function (e) {
+        if (!isMobile()) return; // disable toggle on desktop
         e.stopPropagation();
         this.classList.toggle('open');
       });
     });
 
-    // Close dropdowns when clicking outside
+    // Close dropdowns on outside click (mobile only)
     document.body.addEventListener('click', () => {
+      if (!isMobile()) return;
       dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
     });
   });
