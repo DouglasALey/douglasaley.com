@@ -165,7 +165,7 @@ img {
 .hamburger span {
   display: block;
   height: 3px;
-  background: white;
+  background: #450084; /* JMU Purple */
   border-radius: 2px;
 }
 
