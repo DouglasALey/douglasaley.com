@@ -293,7 +293,7 @@ img {
   border-radius: 0; /* Removed border-radius */
   padding: 0; /* Removed padding */
   margin-bottom: 10px; /* Kept for spacing between list items */
-  display: list-item; /* Ensures it behaves as a standard list item */
+
   /* Removed display: flex; align-items: center; gap: 10px; */
   color: #333;
   font-size: 1rem;
