@@ -1,9 +1,9 @@
-/* Global box-sizing */
+/* Global box-sizing for easier sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Body & Background */
+/* Body styles */
 body {
   margin: 0;
   padding: 0;
@@ -24,152 +24,145 @@ img {
   display: block;
 }
 
-/* Page wrapper to push footer down */
-.page-wrapper {
-  flex: 1 0 auto;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  background: rgba(255 255 255 / 0.85);
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-/* Top Navigation */
+/* Navbar container */
 .topnav {
   position: fixed;
   top: 0;
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  background: transparent;  /* No background */
-  z-index: 1000;
-
+  background: transparent;
   display: flex;
   align-items: center;
-  justify-content: center;  /* Center nav links + profile pic */
+  justify-content: center;
   gap: 30px;
   box-sizing: border-box;
+  z-index: 1000;
   user-select: none;
+  position: relative;
 }
 
-/* Profile image link positioned at left */
+/* Profile link container */
 .topnav a.profile-link {
   position: absolute;
   left: 20px;
   top: 10px;
   height: 40px;
   width: 40px;
+  display: block;
   cursor: pointer;
-  flex-shrink: 0;
-  z-index: 1500;
 }
 
-/* Profile image style */
+/* Profile pic */
 .topnav img.profile-pic {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  border: 2px solid #CBB677; /* JMU Gold border */
+  border: 2px solid #CBB677;
   object-fit: cover;
   object-position: center;
 }
 
-/* Nav links container centered */
+/* Nav links container */
 .nav-links {
   display: flex;
   gap: 30px;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Full width for centering */
+  width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  padding-left: 80px;
 }
 
-/* Main nav link style */
+/* Nav link style */
 .nav-link {
   color: white;
-  text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
-  line-height: 1.2;
+  text-decoration: none;
   padding: 8px 6px;
-  display: inline-block;
-  transition: color 0.3s ease;
+  cursor: pointer;
   user-select: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
   position: relative;
   z-index: 1000;
 }
 
-/* Hover/focus color */
+/* Nav link hover/focus */
 .nav-link:hover,
 .nav-link:focus {
   color: #CBB677;
   outline: none;
 }
 
-/* Dropdown content - hidden by default */
+/* Dropdown container */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown content hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; /* below the main nav link */
+  top: 100%;
   left: 0;
   background: rgba(255 255 255 / 0.95);
   min-width: 180px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   overflow: hidden;
   z-index: 2000;
 }
 
-/* Dropdown content links */
+/* Dropdown links */
 .dropdown-content a {
-  color: #450084; /* JMU Purple */
-  padding: 10px 16px;
-  text-decoration: none;
   display: block;
+  padding: 10px 16px;
   font-weight: 600;
   font-size: 0.9rem;
+  color: #450084;
+  text-decoration: none;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Hover/focus on dropdown links */
+/* Dropdown links hover/focus */
 .dropdown-content a:hover,
 .dropdown-content a:focus {
-  background-color: #CBB677; /* JMU Gold */
+  background-color: #CBB677;
   color: black;
   outline: none;
 }
 
-/* Show dropdown on hover (desktop) */
+/* Show dropdown on hover for desktop */
 @media (hover: hover) and (pointer: fine) {
   .dropdown:hover > .dropdown-content {
     display: block;
   }
 }
 
-/* Hamburger menu (mobile) */
+/* Hamburger button (hidden on desktop) */
 .hamburger {
   position: absolute;
   right: 20px;
   top: 18px;
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
   width: 24px;
   height: 18px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
   z-index: 1600;
 }
 
 .hamburger span {
-  display: block;
   height: 3px;
-  background: #450084; /* JMU Purple */
+  background: #450084;
   border-radius: 2px;
+  display: block;
 }
 
-/* Show hamburger on small screens */
+/* Mobile styles */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -182,15 +175,15 @@ img {
     right: 0;
     background: rgba(255 255 255 / 0.95);
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
     padding: 10px 0;
+    gap: 0;
     display: none;
     max-height: calc(100vh - 60px);
     overflow-y: auto;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding-left: 20px;
   }
 
   .nav-links.active {
@@ -219,11 +212,11 @@ img {
   }
 
   .dropdown-content a {
-    color: #450084;
-    padding: 8px 16px;
     background: white;
     margin: 2px 10px;
     border-radius: 4px;
+    color: #450084;
+    padding: 8px 16px;
   }
 
   .dropdown-content a:hover,
@@ -231,9 +224,13 @@ img {
     background-color: #CBB677;
     color: black;
   }
+
+  .nav-links {
+    padding-left: 0;
+  }
 }
 
-/* Container for main content */
+/* Page content */
 .container {
   padding: 30px 20px;
   max-width: 900px;
@@ -246,11 +243,11 @@ img {
 
 /* Headings */
 h1, h2 {
-  color: #450084; /* JMU Purple */
+  color: #450084;
   margin-top: 0;
 }
 
-/* Paragraphs */
+/* Paragraph text */
 p {
   color: #333;
   line-height: 1.5;
