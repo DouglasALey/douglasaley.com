@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* keep this font */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000000;
   padding-top: 60px; /* space for fixed nav */
   min-height: 100vh;
@@ -9,10 +9,12 @@ body {
   flex-direction: column;
   background: linear-gradient(180deg, #450084 0%, #CBB677 100%);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .topnav {
-  background-color: transparent; /* made transparent */
+  background: none; /* Remove any background, just in case */
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,7 +22,6 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  /* removed box-shadow for no bar or add if you want some subtle shadow */
   padding: 0 20px;
   height: 60px;
   gap: 20px;
@@ -30,11 +31,12 @@ body {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  border: 2px solid #CBB677; /* JMU Gold border */
+  border: 2px solid #CBB677;
   object-fit: cover;
   position: absolute;
   left: 20px;
   top: 10px;
+  background: none; /* no background */
 }
 
 .topnav a {
@@ -43,25 +45,25 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
-  transition: color 0.3s ease; /* smooth text color transition */
+  transition: color 0.3s ease;
   z-index: 1001;
 }
 
 .topnav a:hover,
 .topnav a:focus {
-  background-color: transparent; /* no background change on hover */
-  color: #CBB677; /* gold text on hover */
+  background-color: transparent;
+  color: #CBB677;
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
-  background: rgba(255 255 255 / 0.85);
+  background: rgba(255, 255, 255, 0.85);
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  flex-grow: 1; /* lets container grow to fill space above footer */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
 }
 
 h1 {
@@ -72,13 +74,9 @@ p {
   color: #333;
 }
 
-/* Footer styles */
 footer {
   text-align: center;
-  padding: 15px 10px;
-  background: transparent;
+  font-size: 0.75rem;
   color: black;
-  font-size: 0.9rem;
-  user-select: none;
-  /* removed box-shadow to eliminate the thin line */
+  padding: 10px;
 }
