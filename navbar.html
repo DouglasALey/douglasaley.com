@@ -51,31 +51,4 @@
     <span></span>
     <span></span>
   </button>
-
-  <script>
-    // Wait until DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.getElementById('nav-links');
-
-      hamburger.addEventListener('click', () => {
-        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', String(!expanded));
-        navLinks.classList.toggle('active');
-      });
-
-      // Mobile dropdown toggles
-      document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-        link.addEventListener('click', e => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const parent = link.parentElement;
-            parent.classList.toggle('open');
-            const expanded = link.getAttribute('aria-expanded') === 'true';
-            link.setAttribute('aria-expanded', String(!expanded));
-          }
-        });
-      });
-    });
-  </script>
 </nav>
