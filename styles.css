@@ -5,13 +5,31 @@
 
 /* Body & background */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
+  padding-top: 60px; /* space for fixed nav */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000;
-  padding-top: 60px;
   background: linear-gradient(180deg, #450084 0%, #CBB677 100%);
   background-attachment: fixed;
+}
+
+/* Wrapper to push footer to bottom */
+.page-wrapper {
+  flex: 1 0 auto;
+}
+
+/* Container with white translucent background */
+.container {
+  background: rgba(255 255 255 / 0.85);
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  color: #000;
 }
 
 /* Images */
@@ -28,7 +46,7 @@ img {
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  background: transparent; /* Transparent so gradient shows */
+  background: transparent;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -127,17 +145,18 @@ img {
     display: flex;
   }
   .dropdown:hover > .nav-link {
-    color: #CBB677; /* JMU Gold */
+    color: #CBB677;
   }
 }
 
-/* Footer style */
+/* Footer styling */
 .footer {
+  flex-shrink: 0;
   text-align: center;
-  color: white;
-  font-size: 0.9rem;
   padding: 20px;
-  background: none;
+  font-size: 0.9rem;
+  color: black;
+  background: transparent;
 }
 
 /* ====== Responsive Styles ====== */
