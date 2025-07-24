@@ -45,9 +45,8 @@
           document.getElementById('navbar-placeholder').innerHTML = html;
 
           const hamburger = document.querySelector('.hamburger');
-          const navLinks = document.querySelector('.nav-links'); // Or use document.getElementById('nav-links');
+          const navLinks = document.querySelector('.nav-links');
 
-          // Check if both elements exist before attaching listeners
           if (hamburger && navLinks) {
             hamburger.addEventListener('click', () => {
               const expanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -63,8 +62,8 @@
 
             dropdownLinks.forEach(link => {
               link.addEventListener('click', e => {
-                if (!isMobile()) return; // Only toggle dropdown on mobile
-                e.preventDefault(); // Prevent default link behavior on mobile for dropdowns
+                if (!isMobile()) return;
+                e.preventDefault();
                 const parent = link.parentElement;
                 parent.classList.toggle('open');
                 const expanded = link.getAttribute('aria-expanded') === 'true';
@@ -72,20 +71,16 @@
               });
             });
 
-            // Close dropdowns and main nav menu if clicking outside on mobile
             document.body.addEventListener('click', (event) => {
               if (!isMobile()) return;
 
-              const nav = document.querySelector('.topnav'); // Get the navigation element
-              // Check if the click occurred outside the navigation area
+              const nav = document.querySelector('.topnav');
               if (nav && !nav.contains(event.target)) {
-                // Close all dropdowns
                 dropdownLinks.forEach(link => {
                   const parent = link.parentElement;
                   parent.classList.remove('open');
                   link.setAttribute('aria-expanded', 'false');
                 });
-                // Close the main navigation menu if it's open
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                     hamburger.setAttribute('aria-expanded', 'false');
@@ -102,12 +97,13 @@
 
     <div class="container">
       <h1>Community Leadership</h1>
-      <p>This page details my involvement in community and volunteer initiatives.</p>
+      <p>This page highlights my involvement in community organizations and leadership roles.</p>
 
       <section id="jmu-alumni">
         <h2>President - JMU Alumni Chapter of San Diego</h2>
         <ul>
-          <li>Led chapter operations, including strategic planning, event coordination, and community outreach, resulting in a 25% increase in active membership.</li>
+          <li>Led the San Diego JMU Alumni Chapter, steering efforts to boost member engagement, organize events, and expand the chapter's influence within the local community.</li>
+          <li>Orchestrated diverse events, including social gatherings, networking opportunities, and community service initiatives, resulting in a 25% increase in active membership.</li>
           <li>Managed all aspects of event promotion, including content creation and distribution across various channels (email, social media, Facebook, and LinkedIn), boosting engagement and enhancing brand visibility.</li>
           <li>Scheduled, organized, and managed the financial aspects of various alumni social events, ensuring smooth execution and adherence to budget.</li>
           <li>Conducted thorough post-event evaluations and analyzed feedback to drive continuous improvements, leading to enhanced attendee satisfaction and more successful future events.</li>
@@ -115,13 +111,15 @@
 
         <div class="section-images">
           <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGcO88LKaJFDg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1718212850114?e=1753992000&v=beta&t=RbNmkoVFmuVjM-IT0ogJ4obC5wMPsTZJBUG1uL3pULw" alt="JMU Alumni Event 1" />
-          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGnY_a4AkXapQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1718212603933?e=1753992000&v=beta&t=MJUQi1X85rxKQl51mPKKOUGbxaMUhyPMtqx8hwVO3Q0" alt="JMU Alumni Event 2" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGnY_a4AkXapQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1718212603933?e=1753992000&v=beta&t=MJUdFzE0i81GjQW8_vA1f4D_1K7eN-s2f3v79xI94zU" alt="JMU Alumni Event 2" />
         </div>
       </section>
 
-      <section id="youth-sports">
+      <section id="youth-sports-coaching">
         <h2>Youth Sports Coaching</h2>
-        <p>My involvement in coaching youth sports.</p>
+        <ul>
+            <li>Coached basketball for elementary school children in the Point Loma neighborhood of San Diego, CA, fostering teamwork, skill development, and sportsmanship while creating an engaging and supportive environment</li>
+        </ul>
       </section>
     </div>
   </div>
