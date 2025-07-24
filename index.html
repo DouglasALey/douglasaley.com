@@ -8,86 +8,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="topnav" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="profile-link" aria-label="Home">
-      <img src="profilepicture.png" alt="Douglas A. Ley" class="profile-pic" />
-    </a>
-    <div class="nav-links">
-      <div class="dropdown">
-        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Home</a>
-        <div class="dropdown-content">
-          <a href="about.html">About Me</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
 
-      <div class="dropdown">
-        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Professional Experience</a>
-        <div class="dropdown-content">
-          <a href="work.html">Work Experience</a>
-          <a href="techskills.html">Technical Skills</a>
-          <a href="proskills.html">Professional Skills</a>
-        </div>
-      </div>
+  <!-- Navigation: Load from external navbar.html -->
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
 
-      <div class="dropdown">
-        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Education & Credentials</a>
-        <div class="dropdown-content">
-          <a href="education.html">Education</a>
-          <a href="credentials.html">Credentials</a>
-        </div>
-      </div>
+        // After injecting navbar, initialize hamburger and dropdown behavior
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-      <div class="dropdown">
-        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Community Leadership</a>
-        <div class="dropdown-content">
-          <a href="president.html">President - JMU Alumni Chapter of San Diego</a>
-          <a href="youthsports.html">Youth Sports Coaching</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Personal Interests</a>
-        <div class="dropdown-content">
-          <a href="gaming.html">Gaming Content Creator</a>
-          <a href="travel.html">Travel</a>
-          <a href="sports.html">Sports</a>
-        </div>
-      </div>
-    </div>
-
-    <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <script>
-      // Hamburger toggle script
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-
-      hamburger.addEventListener('click', () => {
-        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', String(!expanded));
-        navLinks.classList.toggle('active');
-      });
-
-      // Mobile dropdown toggles
-      document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-        link.addEventListener('click', e => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const parent = link.parentElement;
-            parent.classList.toggle('open');
-            const expanded = link.getAttribute('aria-expanded') === 'true';
-            link.setAttribute('aria-expanded', String(!expanded));
-          }
+        hamburger?.addEventListener('click', () => {
+          const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', String(!expanded));
+          navLinks.classList.toggle('active');
         });
-      });
-    </script>
-  </nav>
+
+        document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
+          link.addEventListener('click', e => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              const parent = link.parentElement;
+              parent.classList.toggle('open');
+              const expanded = link.getAttribute('aria-expanded') === 'true';
+              link.setAttribute('aria-expanded', String(!expanded));
+            }
+          });
+        });
+      })
+      .catch(err => console.error('Failed to load navbar:', err));
+  </script>
 
   <!-- Page Content -->
   <div class="container">
@@ -101,5 +54,6 @@
 
   <!-- Footer -->
   <footer class="footer">&copy; Douglas A. Ley 2025</footer>
+
 </body>
 </html>
