@@ -42,30 +42,12 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease; /* smooth text color transition */
   z-index: 1001;
 }
 
 .topnav a:hover,
 .topnav a:focus {
-  background-color: #CBB677; /* JMU Gold */
-  color: black;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background: rgba(255 255 255 / 0.85);
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-h1 {
-  color: #450084;
-}
-
-p {
-  color: #333;
+  background-color: transparent; /* no background change on hover */
+  color: #CBB677; /* gold text on hover */
 }
