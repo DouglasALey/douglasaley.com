@@ -12,18 +12,25 @@
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
+      margin-bottom: 2rem; /* space below images */
     }
 
     .section-images img {
-      max-width: 100%;
+      width: 100%;
+      max-width: 300px;
       height: auto;
+      object-fit: cover;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     @media (min-width: 600px) {
+      .section-images {
+        justify-content: flex-start;
+      }
+
       .section-images img {
-        max-width: 48%;
+        width: 45%;
       }
     }
   </style>
@@ -44,7 +51,7 @@
     <!-- Main content -->
     <div class="container">
       <h1>Community Leadership</h1>
-      <p></p>
+      <p>This page will feature my leadership roles, community involvement, and service through organizations like the JMU Alumni Chapter of San Diego.</p>
 
       <section id="jmu">
         <h2>President – JMU Alumni Chapter of San Diego</h2>
@@ -55,9 +62,10 @@
           <li>Scheduled, organized, and managed the financial aspects of various alumni social events, ensuring smooth execution and adherence to budget.</li>
           <li>Conducted thorough post-event evaluations and analyzed feedback to drive continuous improvements, leading to enhanced attendee satisfaction and more successful future events.</li>
         </ul>
+
         <div class="section-images">
-          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGcO88LKaJFDg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1718212850114?e=1753992000&v=beta&t=RbNmkoVFmuVjM-IT0ogJ4obC5wMPsTZJBUG1uL3pULw" alt="JMU Alumni Event Image 1" />
-          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGnY_a4AkXapQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1718212603933?e=1753992000&v=beta&t=MJUQi1X85rxKQl51mPKKOUGbxaMUhyPMtqx8hwVO3Q0" alt="JMU Alumni Event Image 2" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGcO88LKaJFDg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1718212850114?e=1753992000&v=beta&t=RbNmkoVFmuVjM-IT0ogJ4obC5wMPsTZJBUG1uL3pULw" alt="JMU Alumni Event 1" />
+          <img src="https://media.licdn.com/dms/image/v2/D4E2DAQGnY_a4AkXapQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1718212603933?e=1753992000&v=beta&t=MJUQi1X85rxKQl51mPKKOUGbxaMUhyPMtqx8hwVO3Q0" alt="JMU Alumni Event 2" />
         </div>
       </section>
 
@@ -80,8 +88,8 @@
       const navLinks = document.querySelector('.nav-links');
       const dropdowns = document.querySelectorAll('.dropdown');
 
-      hamburger?.addEventListener('click', () => {
-        navLinks?.classList.toggle('active');
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
         const expanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', !expanded);
       });
