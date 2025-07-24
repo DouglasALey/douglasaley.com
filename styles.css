@@ -347,6 +347,25 @@ img {
     font-size: 1.1rem; /* This still applies to general <p> tags */
 }
 
+/* New styles for credentials list items to align date to the right */
+.credential-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.credential-name {
+    flex-grow: 1;
+}
+
+.credential-date {
+    white-space: nowrap;
+    text-align: right;
+    font-size: 0.9rem; /* Adjust font size if needed */
+    color: #555; /* Adjust color if needed */
+}
+
+
 /* Footer styling */
 .footer {
   text-align: center;
