@@ -1,34 +1,34 @@
-/* Global box-sizing for easier sizing */
+/* Global box-sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Global Styles */
+/* Body & background */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #000000;
-  padding-top: 60px; /* Space for fixed nav */
+  color: #000;
+  padding-top: 60px;
   background: linear-gradient(180deg, #450084 0%, #CBB677 100%);
   background-attachment: fixed;
 }
 
-/* Prevent image stretching defaults */
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Top Navigation */
+/* Navigation bar */
 .topnav {
   position: fixed;
   top: 0;
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  background: #450084;
+  background: transparent; /* Transparent so gradient shows */
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -36,14 +36,14 @@ img {
   box-sizing: border-box;
 }
 
-/* Profile link wrapper */
+/* Profile link */
 .topnav a.profile-link {
   height: 40px;
   width: 40px;
   display: block;
 }
 
-/* Profile Image */
+/* Profile picture */
 .topnav img.profile-pic {
   height: 100%;
   width: 100%;
@@ -53,7 +53,7 @@ img {
   object-position: center;
 }
 
-/* Hamburger Icon */
+/* Hamburger menu (hidden desktop) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -68,13 +68,14 @@ img {
   border-radius: 2px;
 }
 
-/* Navigation container */
+/* Nav links container */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
+/* Nav links */
 .nav-links a.nav-link {
   color: white;
   text-decoration: none;
@@ -83,13 +84,16 @@ img {
   transition: color 0.3s ease;
   padding: 8px 12px;
   position: relative;
+  white-space: nowrap;
 }
 
-/* Dropdown styles */
+/* Dropdown container */
 .dropdown {
   position: relative;
+  user-select: none;
 }
 
+/* Dropdown content hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -99,27 +103,35 @@ img {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   min-width: 200px;
-  z-index: 999;
   flex-direction: column;
+  z-index: 999;
 }
 
+/* Dropdown links */
 .dropdown-content a {
   color: #450084;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
   font-weight: 500;
-}
-
-.dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover > .nav-link {
-  color: #CBB677;
+/* Dropdown links hover */
+.dropdown-content a:hover {
+  background-color: #eee;
 }
 
-/* Footer Styling */
+/* Desktop: show dropdown on hover */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover .dropdown-content {
+    display: flex;
+  }
+  .dropdown:hover > .nav-link {
+    color: #CBB677; /* JMU Gold */
+  }
+}
+
+/* Footer style */
 .footer {
   text-align: center;
   color: white;
@@ -128,8 +140,14 @@ img {
   background: none;
 }
 
-/* ========== Responsive Styles ========== */
+/* ====== Responsive Styles ====== */
 @media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav links by default */
   .nav-links {
     display: none;
     position: absolute;
@@ -140,42 +158,39 @@ img {
     background: #450084;
     padding: 10px 0;
     gap: 0;
+    z-index: 998;
   }
 
+  /* Show nav links when active */
   .nav-links.active {
     display: flex;
   }
 
+  /* Dropdown content inside mobile menu */
   .dropdown-content {
     position: static;
     box-shadow: none;
     background: #CBB677;
     border-radius: 0;
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding-left: 24px;
-  }
-
-  .dropdown:hover .dropdown-content {
     display: none;
   }
 
-  .dropdown > .nav-link::after {
-    content: ' ▼';
-    font-size: 0.8rem;
-  }
-
-  .dropdown > input {
-    display: none;
-  }
-
+  /* Show dropdown content if .open */
   .dropdown.open .dropdown-content {
     display: flex;
   }
 
-  .hamburger {
-    display: flex;
+  /* Dropdown toggle arrow */
+  .dropdown > .nav-link::after {
+    content: ' ▼';
+    font-size: 0.8rem;
+    color: white;
+    margin-left: 6px;
+  }
+
+  /* Dropdown links styling */
+  .dropdown-content a {
+    color: black;
+    padding-left: 24px;
   }
 }
