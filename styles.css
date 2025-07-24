@@ -1,115 +1,93 @@
-/* GLOBAL STYLES */
+/* Global Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000000;
-  padding-top: 60px; /* space for fixed nav */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  padding-top: 60px; /* Space for fixed nav */
   background: linear-gradient(180deg, #450084 0%, #CBB677 100%);
   background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
-/* TOP NAVIGATION BAR */
+/* Prevent image stretching defaults */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Top Navigation */
 .topnav {
-  background: none; /* fully transparent */
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* make room for profile pic */
-  z-index: 1000;
-  padding: 10px 20px;
-  height: 60px;
+  justify-content: center;
   gap: 20px;
+  height: 60px;
+  padding: 0 20px;
+  background-color: transparent; /* Transparent nav */
+  z-index: 1000;
 }
 
-/* PROFILE IMAGE IN NAV */
+/* Profile link wrapper */
 .topnav a.profile-link {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  display: block;
+  height: 50px;
+  width: 50px;
+  flex-shrink: 0;
+  position: absolute;
+  left: 20px;
+  top: 5px;
 }
 
+/* Profile Image */
 .topnav img.profile-pic {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   border: 2px solid #CBB677; /* JMU Gold border */
   object-fit: cover;
-  background: none;
-  position: relative;
+  object-position: center;
 }
 
-/* NAV LINKS */
+/* Navigation links */
 .topnav a.nav-link {
   color: white;
-  padding: 14px 20px;
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
   transition: color 0.3s ease;
-  z-index: 1001;
 }
 
 .topnav a.nav-link:hover,
 .topnav a.nav-link:focus {
-  background-color: transparent;
-  color: #CBB677; /* gold text on hover */
+  color: #CBB677; /* JMU Gold */
 }
 
-/* MAIN CONTAINER */
+/* Content Container */
 .container {
   max-width: 800px;
-  margin: 100px auto 40px auto; /* add top margin to clear nav */
+  margin: 40px auto;
   padding: 40px 20px;
   background: rgba(255, 255, 255, 0.85);
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-/* TYPOGRAPHY */
-h1 {
-  color: #450084;
-}
-
-p {
-  color: #333;
-}
-
-/* FOOTER */
-footer {
+/* Footer */
+.footer {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: black;
-  padding: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   background: transparent;
-  margin-bottom: 10px;
-}
-
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 480px) {
-  .topnav {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .topnav a.nav-link {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .topnav a.profile-link {
-    height: 36px;
-    width: 36px;
-  }
+  padding: 5px 10px;
+  z-index: 999;
+  border: none;
 }
