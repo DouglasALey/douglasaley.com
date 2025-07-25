@@ -272,9 +272,19 @@ img {
   border-top: 1px solid #eee;
 }
 
-/* Hide default H2 as we're using custom spans for titles within entries */
-.container section h2 {
+/* This rule was causing issues by hiding H2s. It is now removed. */
+/* .container section h2 {
     display: none;
+} */
+
+/* Ensure H2s are visible and styled as section headers */
+.container section h2 {
+  color: #450084;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  display: block; /* Ensure it's displayed */
 }
 
 
