@@ -298,7 +298,7 @@ img {
   line-height: 1.5;
 }
 
-/* Styles for education entries */
+/* Styles for education entries (the 'perfect' example) */
 .education-entry {
     margin-bottom: 20px;
 }
@@ -334,70 +334,67 @@ img {
     line-height: 1.4;
 }
 
-/* Styles for work experience entries (mimicking education) */
-.work-entry {
-    margin-bottom: 20px;
-}
+/* --- NEW GENERIC STYLES FOR CONSISTENT ENTRY HEADERS --- */
 
-.entry-header-line { /* For company name and location on the same line */
+/* Base style for all primary lines (e.g., Company/Org Name + Location/Date) */
+.entry-primary-line {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 5px;
+    margin-bottom: 5px; /* Space between this line and the next */
 }
 
-.entry-main-title { /* For company/organization name, like school-name */
-    font-size: 1.2rem;
+/* Style for the main title (Company Name, Org Name, Youth Sports Coaching H2) */
+.entry-main-title {
+    font-size: 1.2rem; /* Matches school-name */
     font-weight: 600;
     color: #450084; /* JMU Purple */
     text-align: left;
-    flex-grow: 1;
+    flex-grow: 1; /* Allows it to take up available space */
 }
 
-.entry-location-date { /* For location or dates, like .location */
-    font-size: 1rem;
+/* Style for text that should be smaller, gray, and right-aligned on the primary line */
+.entry-secondary-text-right {
+    font-size: 1rem; /* Matches location */
     color: #555;
     white-space: nowrap;
     text-align: right;
 }
 
-.entry-subheader-line { /* For role title and dates on the same line */
+/* Base style for all secondary lines (e.g., Role Title + Dates) */
+.entry-secondary-line {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 10px; /* Space before bullet points */
 }
 
-.entry-role-title { /* For the role title, now purple and bold */
-    font-size: 0.95rem; /* Slightly smaller than main title, but still prominent */
-    color: #450084; /* Set to purple as requested */
-    font-weight: 600; /* Make it bold as requested */
+/* Style for the role title (e.g., Independent Account Manager, President) */
+.entry-role-title {
+    font-size: 0.95rem; /* Matches degree-info size */
+    font-weight: 600; /* Made bold as per request */
+    color: #450084; /* Set to purple as per request */
     text-align: left;
-    flex-grow: 1; /* Allow it to take up available space */
+    flex-grow: 1; /* Allows it to take up available space */
 }
 
-/* Styles for volunteer.html specific elements */
-.section-header-line { /* For h2 and right-aligned date on the same line */
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 5px; /* Space between title line and content */
+/* Style for text that should be smaller, gray, and right-aligned on the secondary line (dates) */
+.entry-tertiary-text-right {
+    font-size: 0.95rem; /* Matches degree-info size */
+    color: #555;
+    white-space: nowrap;
+    text-align: right;
 }
 
-.section-header-line h2 { /* Ensure h2 inside this div is styled correctly */
-    margin-bottom: 0; /* Remove default h2 margin */
-    flex-grow: 1; /* Allow h2 to take space */
+/* Specific adjustments for sections in work.html and volunteer.html */
+.work-entry {
+    margin-bottom: 20px; /* Space between each work entry */
+}
+
+/* For volunteer.html, the H2 is the primary title */
+#jmu-alumni h2, #youth-sports-coaching h2 {
+    margin-bottom: 0; /* Remove default h2 margin when inside flex */
     text-align: left; /* Ensure it's left-aligned */
-}
-
-.section-role-title { /* For the role title in volunteer (e.g., President), now purple and bold */
-    font-size: 0.95rem;
-    color: #450084; /* Set to purple for consistency with work roles */
-    font-weight: 600; /* Make it bold */
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 10px;
-    line-height: 1.4;
 }
 
 /* Styles for credentials list items to align date to the right */
