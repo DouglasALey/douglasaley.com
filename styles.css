@@ -272,11 +272,6 @@ img {
   border-top: 1px solid #eee;
 }
 
-/* This rule was causing issues by hiding H2s. It is now removed. */
-/* .container section h2 {
-    display: none;
-} */
-
 /* Ensure H2s are visible and styled as section headers */
 .container section h2 {
   color: #450084;
@@ -284,7 +279,7 @@ img {
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  display: block; /* Ensure it's displayed */
+  display: block; /* Explicitly ensure visibility */
 }
 
 
@@ -394,9 +389,10 @@ img {
     text-align: right;
 }
 
-/* Specific adjustments for sections in work.html and volunteer.html */
+/* Apply consistent margin to all main entries */
 .work-entry,
-.volunteer-entry { /* Apply consistent margin to all main entries */
+.volunteer-entry,
+.education-entry { /* Added education-entry for consistency */
     margin-bottom: 20px;
 }
 
