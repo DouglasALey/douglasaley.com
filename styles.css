@@ -390,7 +390,7 @@ img {
     text-align: left; /* Ensure it's left-aligned */
 }
 
-.section-role-title { /* For the role title in volunteer (e.g., President) */
+.section-role-title { /* For the role title in volunteer (e.g., President), now purple and bold */
     font-size: 0.95rem;
     color: #450084; /* Set to purple for consistency with work roles */
     font-weight: 600; /* Make it bold */
