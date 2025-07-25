@@ -272,13 +272,11 @@ img {
   border-top: 1px solid #eee;
 }
 
+/* Hide default H2 as we're using custom spans for titles within entries */
 .container section h2 {
-  color: #450084;
-  margin-bottom: 15px;
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
+    display: none;
 }
+
 
 .container section ul {
   list-style: disc; /* Re-added to display bullet points */
@@ -334,18 +332,18 @@ img {
     line-height: 1.4;
 }
 
-/* --- NEW GENERIC STYLES FOR CONSISTENT ENTRY HEADERS --- */
+/* --- NEW GENERIC STYLES FOR CONSISTENT ENTRY HEADERS ACROSS WORK & VOLUNTEER --- */
 
-/* Base style for all primary lines (e.g., Company/Org Name + Location/Date) */
-.entry-primary-line {
+/* Base style for the primary line of an entry (e.g., Company/Org Name + Location/Date) */
+.entry-line-primary {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 5px; /* Space between this line and the next */
 }
 
-/* Style for the main title (Company Name, Org Name, Youth Sports Coaching H2) */
-.entry-main-title {
+/* Style for the main title (Company Name, Org Name, Youth Sports Coaching H2 replacement) */
+.entry-title-main {
     font-size: 1.2rem; /* Matches school-name */
     font-weight: 600;
     color: #450084; /* JMU Purple */
@@ -353,7 +351,7 @@ img {
     flex-grow: 1; /* Allows it to take up available space */
 }
 
-/* Style for text that should be smaller, gray, and right-aligned on the primary line */
+/* Style for text that should be smaller, gray, and right-aligned on the primary line (Location or Main Date) */
 .entry-secondary-text-right {
     font-size: 1rem; /* Matches location */
     color: #555;
@@ -361,8 +359,8 @@ img {
     text-align: right;
 }
 
-/* Base style for all secondary lines (e.g., Role Title + Dates) */
-.entry-secondary-line {
+/* Base style for the secondary line of an entry (e.g., Role Title + Dates) */
+.entry-line-secondary {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -370,7 +368,7 @@ img {
 }
 
 /* Style for the role title (e.g., Independent Account Manager, President) */
-.entry-role-title {
+.entry-title-role {
     font-size: 0.95rem; /* Matches degree-info size */
     font-weight: 600; /* Made bold as per request */
     color: #450084; /* Set to purple as per request */
@@ -378,7 +376,7 @@ img {
     flex-grow: 1; /* Allows it to take up available space */
 }
 
-/* Style for text that should be smaller, gray, and right-aligned on the secondary line (dates) */
+/* Style for text that should be smaller, gray, and right-aligned on the secondary line (Dates for Role) */
 .entry-tertiary-text-right {
     font-size: 0.95rem; /* Matches degree-info size */
     color: #555;
@@ -387,12 +385,10 @@ img {
 }
 
 /* Specific adjustments for sections in work.html and volunteer.html */
-.work-entry {
-    margin-bottom: 20px; /* Space between each work entry */
+.work-entry,
+.volunteer-entry { /* Apply consistent margin to all main entries */
+    margin-bottom: 20px;
 }
-
-/* For volunteer.html, the H2 is the primary title */
-/* No specific H2 rules needed here, as entry-main-title handles it */
 
 
 /* Styles for credentials list items to align date to the right */
