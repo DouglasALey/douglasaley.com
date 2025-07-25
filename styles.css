@@ -339,14 +339,14 @@ img {
     margin-bottom: 20px;
 }
 
-.company-location-line { /* Used in work.html for company name and location */
+.entry-header-line { /* For company name and location on the same line */
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 5px;
 }
 
-.company-name-style { /* For the company name, like school-name */
+.entry-main-title { /* For company/organization name, like school-name */
     font-size: 1.2rem;
     font-weight: 600;
     color: #450084; /* JMU Purple */
@@ -354,51 +354,50 @@ img {
     flex-grow: 1;
 }
 
-.work-location-style { /* For the work location, like .location */
+.entry-location-date { /* For location or dates, like .location */
     font-size: 1rem;
     color: #555;
     white-space: nowrap;
     text-align: right;
 }
 
-.position-title-style { /* For the role/position, like .degree-info, now purple */
-    font-size: 0.95rem;
-    color: #450084; /* Set to purple as requested */
-    font-weight: 600; /* Make it bold as requested */
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 5px; /* Adjust spacing */
-    line-height: 1.4;
-}
-
-.work-dates-style { /* For the work dates, like .location or .section-date */
-    font-size: 0.95rem; /* Adjusted to match position-title-style for consistency */
-    color: #555;
-    text-align: right;
-    margin-top: 0;
-    margin-bottom: 10px;
-    line-height: 1.4;
-}
-
-/* Styles for volunteer.html sections with dates (like Youth Sports Coaching) */
-.section-title-line {
+.entry-subheader-line { /* For role title and dates on the same line */
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 10px; /* Space between title line and content */
+    margin-bottom: 10px; /* Space before bullet points */
 }
 
-.section-title-line h2 { /* Ensure h2 inside this div is styled correctly */
+.entry-role-title { /* For the role title, now purple and bold */
+    font-size: 0.95rem; /* Slightly smaller than main title, but still prominent */
+    color: #450084; /* Set to purple as requested */
+    font-weight: 600; /* Make it bold as requested */
+    text-align: left;
+    flex-grow: 1; /* Allow it to take up available space */
+}
+
+/* Styles for volunteer.html specific elements */
+.section-header-line { /* For h2 and right-aligned date on the same line */
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px; /* Space between title line and content */
+}
+
+.section-header-line h2 { /* Ensure h2 inside this div is styled correctly */
     margin-bottom: 0; /* Remove default h2 margin */
     flex-grow: 1; /* Allow h2 to take space */
     text-align: left; /* Ensure it's left-aligned */
 }
 
-.section-date { /* For dates in volunteer sections */
-    font-size: 1rem;
-    color: #555;
-    white-space: nowrap;
-    text-align: right;
+.section-role-title { /* For the role title in volunteer (e.g., President) */
+    font-size: 0.95rem;
+    color: #450084; /* Set to purple for consistency with work roles */
+    font-weight: 600; /* Make it bold */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
 /* Styles for credentials list items to align date to the right */
