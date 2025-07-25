@@ -287,74 +287,30 @@ img {
 }
 
 .container section ul li {
-  /* Removed properties that created the 'box' effect */
-  background-color: transparent; /* Changed to transparent */
-  border: none; /* Removed border */
-  border-radius: 0; /* Removed border-radius */
-  padding: 0; /* Removed padding */
-  margin-bottom: 10px; /* Kept for spacing between list items */
-  display: list-item; /* Ensures it behaves as a standard list item */
-  /* Removed display: flex; align-items: center; gap: 10px; */
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  display: list-item;
   color: #333;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-/* Add this new style for the education entry container */
+/* Styles for education entries */
 .education-entry {
-    margin-bottom: 20px; /* Add some spacing between entries if you have more than one */
-}
-
-/* Style for the line containing school name and location */
-.education-entry .school-location-line {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Pushes items to the ends */
-    align-items: baseline; /* Aligns text based on their baselines */
-    margin-bottom: 5px; /* Spacing between this line and the degree info */
-}
-
-/* Style for the school name */
-.education-entry .school-name {
-    font-size: 1.2rem; /* Slightly larger than current paragraph text */
-    font-weight: 600; /* Make it bold */
-    color: #450084; /* JMU Purple for emphasis */
-    text-align: left; /* Explicitly left-align */
-    flex-grow: 1; /* Allow it to take up available space */
-}
-
-/* Style for the location */
-.education-entry .location {
-    font-size: 1rem; /* Slightly smaller than school name */
-    color: #555;
-    white-space: nowrap; /* Prevent "Harrisonburg, VA" from wrapping */
-    text-align: right; /* Explicitly right-align */
-}
-
-/* Style for the degree information */
-.education-entry .degree-info {
-    font-size: 0.95rem; /* Smaller font for the degree info */
-    color: #333;
-    text-align: left; /* Left align the degree information */
-    margin-top: 0; /* Remove default paragraph top margin */
-    margin-bottom: 10px; /* Space after the degree info */
-    line-height: 1.4; /* Adjust line height for readability */
-}
-
-/* New style for the work experience entry container */
-.work-entry {
     margin-bottom: 20px;
 }
 
-/* Style for the line containing company name and dates */
-.company-dates-line {
+.education-entry .school-location-line {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 5px;
 }
 
-/* Style for the company name */
-.company-name {
+.education-entry .school-name {
     font-size: 1.2rem;
     font-weight: 600;
     color: #450084;
@@ -362,16 +318,14 @@ img {
     flex-grow: 1;
 }
 
-/* Style for the work dates */
-.work-dates {
+.education-entry .location {
     font-size: 1rem;
     color: #555;
     white-space: nowrap;
     text-align: right;
 }
 
-/* Style for the position information */
-.position-info {
+.education-entry .degree-info {
     font-size: 0.95rem;
     color: #333;
     text-align: left;
@@ -380,11 +334,88 @@ img {
     line-height: 1.4;
 }
 
-/* Ensure the parent .container p does not override the new specific styles */
-.container p {
-    /* Keep existing styles, but ensure specific overrides work */
-    text-align: center; /* This still applies to general <p> tags */
-    font-size: 1.1rem; /* This still applies to general <p> tags */
+/* Styles for work experience entries (mimicking education) */
+.work-entry {
+    margin-bottom: 20px;
+}
+
+.company-location-line { /* Used in work.html for company name and location */
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.company-name-style { /* For the company name, like school-name */
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #450084; /* JMU Purple */
+    text-align: left;
+    flex-grow: 1;
+}
+
+.work-location-style { /* For the work location, like .location */
+    font-size: 1rem;
+    color: #555;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.position-title-style { /* For the role/position, like .degree-info */
+    font-size: 0.95rem;
+    color: #333; /* Changed to match degree-info color */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 5px; /* Adjust spacing */
+    line-height: 1.4;
+}
+
+.work-dates-style { /* For the work dates, like .location or .section-date */
+    font-size: 0.95rem; /* Adjusted to match position-title-style for consistency */
+    color: #555;
+    text-align: right;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Styles for volunteer.html sections with dates (like Youth Sports Coaching) */
+.section-title-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px; /* Space between title line and content */
+}
+
+.section-title-line h2 { /* Ensure h2 inside this div is styled correctly */
+    margin-bottom: 0; /* Remove default h2 margin */
+    flex-grow: 1; /* Allow h2 to take space */
+    text-align: left; /* Ensure it's left-aligned */
+}
+
+.section-date { /* For dates in volunteer sections */
+    font-size: 1rem;
+    color: #555;
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Styles for credentials list items to align date to the right */
+.credential-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.credential-name {
+    flex-grow: 1;
+}
+
+.credential-date {
+    white-space: nowrap;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 /* Footer styling */
