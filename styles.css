@@ -392,10 +392,8 @@ img {
 }
 
 /* For volunteer.html, the H2 is the primary title */
-#jmu-alumni h2, #youth-sports-coaching h2 {
-    margin-bottom: 0; /* Remove default h2 margin when inside flex */
-    text-align: left; /* Ensure it's left-aligned */
-}
+/* No specific H2 rules needed here, as entry-main-title handles it */
+
 
 /* Styles for credentials list items to align date to the right */
 .credential-item {
