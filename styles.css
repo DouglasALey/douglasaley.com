@@ -361,9 +361,10 @@ img {
     text-align: right;
 }
 
-.position-title-style { /* For the role/position, like .degree-info */
+.position-title-style { /* For the role/position, like .degree-info, now purple */
     font-size: 0.95rem;
-    color: #333; /* Changed to match degree-info color */
+    color: #450084; /* Set to purple as requested */
+    font-weight: 600; /* Make it bold as requested */
     text-align: left;
     margin-top: 0;
     margin-bottom: 5px; /* Adjust spacing */
