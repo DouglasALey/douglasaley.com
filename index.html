@@ -6,6 +6,24 @@
   <title>Douglas A. Ley</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Increase the profile picture size */
+    .main-profile-pic {
+      width: 300px; /* adjust as needed (3–4x original) */
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .main-profile-pic {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,9 +35,8 @@
         document.getElementById('navbar-placeholder').innerHTML = html;
 
         const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links'); // Or use document.getElementById('nav-links');
+        const navLinks = document.querySelector('.nav-links');
 
-        // Check if both elements exist before attaching listeners
         if (hamburger && navLinks) {
           hamburger.addEventListener('click', () => {
             const expanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -35,8 +52,8 @@
 
           dropdownLinks.forEach(link => {
             link.addEventListener('click', e => {
-              if (!isMobile()) return; // Only toggle dropdown on mobile
-              e.preventDefault(); // Prevent default link behavior on mobile for dropdowns
+              if (!isMobile()) return;
+              e.preventDefault();
               const parent = link.parentElement;
               parent.classList.toggle('open');
               const expanded = link.getAttribute('aria-expanded') === 'true';
@@ -44,29 +61,25 @@
             });
           });
 
-          // Close dropdowns and main nav menu if clicking outside on mobile
           document.body.addEventListener('click', (event) => {
             if (!isMobile()) return;
 
-            const nav = document.querySelector('.topnav'); // Get the navigation element
-            // Check if the click occurred outside the navigation area
+            const nav = document.querySelector('.topnav');
             if (nav && !nav.contains(event.target)) {
-              // Close all dropdowns
               dropdownLinks.forEach(link => {
                 const parent = link.parentElement;
                 parent.classList.remove('open');
                 link.setAttribute('aria-expanded', 'false');
               });
-              // Close the main navigation menu if it's open
               if (navLinks.classList.contains('active')) {
-                  navLinks.classList.remove('active');
-                  hamburger.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
               }
             }
           });
 
         } else {
-            console.error('Hamburger or Navigation Links not found after loading navbar.html. Menu functionality may be limited.');
+          console.error('Hamburger or Navigation Links not found after loading navbar.html. Menu functionality may be limited.');
         }
       })
       .catch(err => console.error('Failed to load navbar:', err));
@@ -74,7 +87,6 @@
 
   <div class="container">
     <h1>Douglas A. Ley</h1>
-    <!-- Larger profile picture added here -->
     <img src="profilepicture.png" alt="Douglas A. Ley Profile" class="main-profile-pic" />
     <p>Client-Facing Project Manager | Legal & Technical Consulting | CRM & Account Management Experience</p>
     <section>
