@@ -8,13 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* Increase the profile picture size */
     .main-profile-pic {
-      width: 300px; /* adjust as needed (3–4x original) */
+      width: 300px;
       height: 300px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 20px 0;
+      display: block;
+      margin: 20px auto; /* centers the image horizontally */
+    }
+
+    .profile-section {
+      text-align: center;
+      margin-bottom: 40px;
     }
 
     @media (max-width: 768px) {
@@ -87,8 +92,12 @@
 
   <div class="container">
     <h1>Douglas A. Ley</h1>
-    <img src="profilepicture.png" alt="Douglas A. Ley Profile" class="main-profile-pic" />
-    <p>Client-Facing Project Manager | Legal & Technical Consulting | CRM & Account Management Experience</p>
+
+    <div class="profile-section">
+      <img src="profilepicture.png" alt="Douglas A. Ley Profile" class="main-profile-pic" />
+      <p>Client-Facing Project Manager | Legal & Technical Consulting | CRM & Account Management Experience</p>
+    </div>
+
     <section>
       <h2>Welcome!</h2>
       <p>More content coming soon!</p>
